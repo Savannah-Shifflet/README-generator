@@ -15,33 +15,34 @@
 // THEN I am taken to the corresponding section of the README
 
 const inquirer = require('inquirer');
+const fs = require('fs');
 
 // Array of questions for user input using inquirer formatting
 const questions = [
     {
         type: 'input',
         message: 'What is the title of your project?',
-        name: 'title',
+        name: 'title'
     },
     {
         type: 'input',
         message: 'Provide a short description explaining the what, why, and how of your project.',
-        name: 'description',
+        name: 'description'
     },
     {
         type: 'input',
         message: 'What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.',
-        name: 'installation',
+        name: 'installation'
     },
     {
         type: 'input',
         message: 'Please provide contribution guidelines for your project.',
-        name: 'contribution',
+        name: 'contribution'
     },
     {
         type: 'input',
         message: 'Please provide test instructions and examples for use.',
-        name: 'test',
+        name: 'test'
     },
     {
         type: 'list',
@@ -52,23 +53,25 @@ const questions = [
     {
         type: 'input',
         message: 'Please enter your GitHub username.',
-        name: 'username',
+        name: 'username'
     },
     {
         type: 'input',
         message: 'Please enter your email address.',
-        name: 'email',
+        name: 'email'
     }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(`${fileName}.md`, data, (error) => error ? console.error(error) : console.log('Answers logged!') );
+}
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer
         .prompt(questions)
-        .then()
+        .then((answers) => writeToFile(answers.title, JSON.stringify(answers)))
         .catch((error) => console.log(error));
 }
 

@@ -20,17 +20,25 @@ function renderLicenseBadge(license, username, repo) {
   if(license === 'No license was used'){
     return '';
   } else {
-    return `![license badge](https://img.shields.io/github/license/${username}/${repo})`;
+    return `![${license} badge](https://img.shields.io/github/license/${username}/${repo})`;
   }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(username, repo) {
+  fetch(`https://api.github.com/repos/${username}/${repo}/license`)
+    .then((response) => response.json())
+    .then((data) => fetch(data.license.url))
+    .then((licenseResponse) => licenseResponse.json())
+    .then((licenseData) => licenseData.html_url)
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license, username, repo) {
+
+}
 
 // Function to generate markdown for README with key sections
 function generateMarkdown(data) {

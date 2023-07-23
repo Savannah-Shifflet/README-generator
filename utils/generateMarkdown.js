@@ -27,9 +27,7 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
-// TODO: Create a function to generate markdown for README
-// WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-// THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
+// Function to generate markdown for README with key sections
 function generateMarkdown(data) {
   return `# ${data.title}
   ## Description
@@ -50,10 +48,10 @@ function generateMarkdown(data) {
   ## Contributing
   ${data.contribution}
   ## Tests
-  ${data.tests}
+  ${data.test}
   ## Questions 
-  ${data.username}
-  ${data.email}
+  ${data.question} \n
+  My GitHub profile is [${data.username}](https://github.com/${data.username}) and my email is ${data.email}.
 `;
 }
 

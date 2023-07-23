@@ -31,24 +31,28 @@ function renderLicenseSection(license) {}
 // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
 // THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
 function generateMarkdown(data) {
-  return `# ${data.title} \n
-  \n
-  ## Description \n
-  ${data.description}\n
-  \n
-  ## Table of Contents \n
-  ## Installation \n
-  ${data.installation}\n
-  ## Usage \n
-  ${data.usage} \n
-  ## License \n
-  ${data.license} \n
-  ## Contributing \n
-  ${data.contribution} \n
-  ## Tests \n
-  ${data.tests} \n
-  ## Questions \n
-  ${data.username}\n
+  return `# ${data.title}
+  ## Description
+  ${data.description}
+  ## Table of Contents
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
+  ## Installation
+  ${data.installation}
+  ## Usage
+  ${data.usage}
+  ## License
+  ${data.license}
+  ## Contributing
+  ${data.contribution}
+  ## Tests
+  ${data.tests}
+  ## Questions 
+  ${data.username}
   ${data.email}
 `;
 }

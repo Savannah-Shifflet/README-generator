@@ -16,6 +16,7 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown')
 
 // Array of questions for user input using inquirer formatting
 const questions = [
@@ -36,12 +37,17 @@ const questions = [
     },
     {
         type: 'input',
+        message: 'Provide instructions and examples for use.',
+        name: 'usage'
+    },
+    {
+        type: 'input',
         message: 'Please provide contribution guidelines for your project.',
         name: 'contribution'
     },
     {
         type: 'input',
-        message: 'Please provide test instructions and examples for use.',
+        message: 'Provide examples on how to run tests for your application.',
         name: 'test'
     },
     {
@@ -64,14 +70,14 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(`${fileName}.md`, data, (error) => error ? console.error(error) : console.log('Answers logged!') );
+    fs.writeFile(`${fileName}.md`, generateMarkdown(data), (error) => error ? console.error(error) : console.log('Answers logged!') );
 }
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer
         .prompt(questions)
-        .then((answers) => writeToFile(answers.title, JSON.stringify(answers)))
+        .then((answers) => writeToFile(answers.title, answers))
         .catch((error) => console.log(error));
 }
 

@@ -14,6 +14,8 @@
 // WHEN I click on the links in the Table of Contents
 // THEN I am taken to the corresponding section of the README
 
+const inquirer = require('inquirer');
+
 // Array of questions for user input using inquirer formatting
 const questions = [
     {
@@ -63,7 +65,12 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer
+        .prompt(questions)
+        .then()
+        .catch((error) => console.log(error));
+}
 
 // Function call to initialize app
 init();

@@ -14,10 +14,15 @@
 // WHEN I click on the links in the Table of Contents
 // THEN I am taken to the corresponding section of the README
 
-
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license, username, repo) {
+  if(license === 'No license was used'){
+    return '';
+  } else {
+    return `![license badge](https://img.shields.io/github/license/${username}/${repo})`;
+  }
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
@@ -30,6 +35,7 @@ function renderLicenseSection(license) {}
 // Function to generate markdown for README with key sections
 function generateMarkdown(data) {
   return `# ${data.title}
+  ${renderLicenseBadge(data.license, data.username, data.repo)}
   ## Description
   ${data.description}
   ## Table of Contents

@@ -1,5 +1,5 @@
 # README-Generator
-
+![MIT License badge](https://img.shields.io/github/license/savannah-shifflet/README-generator)
 ## Description
 
 This is a Node.js command-line application that asks the user a series of questions and utilizes the user's response to generate a unique professional README file for their project. 

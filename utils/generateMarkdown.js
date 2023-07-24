@@ -14,7 +14,7 @@ function renderLicenseSection(license) {
   if (license === 'No license was used'){
     return 'N/A';
   } else {
-    return `The ${license} was used.`;
+    return `This project is licensed using the ${license}.`;
   }
 }
 

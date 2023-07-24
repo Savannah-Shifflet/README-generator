@@ -1,7 +1,7 @@
-# title of project
-  (https://img.shields.io/github/license/savannah-shifflet/professional-portfolio)
+# title
+  ![MIT License badge](https://img.shields.io/github/license/savannah-shifflet/professional-portfolio)
   ## Description
-  description
+  dscriptiondkdke
   ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
@@ -10,16 +10,16 @@
   - [Tests](#tests)
   - [Questions](#questions)
   ## Installation
-  steps to install
+  adsfkjwkljf
   ## Usage
-  instructions for use
+  adlskfjawlef
   ## License
-  The MIT License was used and more information can be read [here]undefined
+  The MIT License was used and more information can be found [here]undefined.
   ## Contributing
-  contribution
+  awelfkjw
   ## Tests
-  example tests
+  aweifjweroi
   ## Questions 
-  insturctions 
+  instuiewrfoaiwrf 
 
   My GitHub profile is [savannah-shifflet](https://github.com/savannah-shifflet) and my email is savannah.shifflet@gmail.com.

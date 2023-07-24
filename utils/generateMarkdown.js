@@ -33,23 +33,33 @@ function renderLicenseLink(username, repo) {
     .then((licenseResponse) => licenseResponse.json())
     .then((licenseData) => {
       console.log(`(${licenseData.html_url}) in function`);
-      return `(${licenseData.html_url})`;
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(`(${licenseData.html_url})`);
+        }, 2000);
+      })
     })
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license, username, repo) {
-  let link = renderLicenseLink(username, repo);
-  if (license === 'No license was used'){
-    return 'N/A';
-  } else {
-    return `The ${license} was used and more information can be read [here]${link}`;
-  }
+async function renderLicenseSection(link) {
+  // let link = await renderLicenseLink(username, repo);
+  // console.log(link);
+  // if (license === 'No license was used'){
+  //   return 'N/A';
+  // } else {
+    return `The license} was used and more information can be read [here]${link}`;
+  // }
 }
+
+
+console.log(Promise.resolve(renderLicenseLink('savannah-shifflet', 'professional-portfolio')).then((value) => renderLicenseSection(value)));
+
 
 // Function to generate markdown for README with key sections
 function generateMarkdown(data) {
+  let link = renderLicenseLink(data.username, data.repo);
   return `# ${data.title}
   ${renderLicenseBadge(data.license, data.username, data.repo)}
   ## Description
@@ -66,7 +76,7 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
   ## License
-  ${renderLicenseSection(data.license, data.username, data.repo)}
+  The ${data.license} was used and more information can be found [here]${link}.
   ## Contributing
   ${data.contribution}
   ## Tests

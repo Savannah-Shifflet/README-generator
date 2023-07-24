@@ -31,13 +31,21 @@ function renderLicenseLink(username, repo) {
     .then((response) => response.json())
     .then((data) => fetch(data.license.url))
     .then((licenseResponse) => licenseResponse.json())
-    .then((licenseData) => licenseData.html_url)
+    .then((licenseData) => {
+      console.log(`(${licenseData.html_url}) in function`);
+      return `(${licenseData.html_url})`;
+    })
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license, username, repo) {
-
+  let link = renderLicenseLink(username, repo);
+  if (license === 'No license was used'){
+    return 'N/A';
+  } else {
+    return `The ${license} was used and more information can be read [here]${link}`;
+  }
 }
 
 // Function to generate markdown for README with key sections
@@ -58,7 +66,7 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
   ## License
-  ${data.license}
+  ${renderLicenseSection(data.license, data.username, data.repo)}
   ## Contributing
   ${data.contribution}
   ## Tests
